@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment4", "Assignment4\Assignment4.csproj", "{57143E03-0998-41EE-96F1-997E0E5BC558}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLDataLayers", "DataLayers\SQLDataLayers.csproj", "{F7946484-924F-4178-9305-536291593BA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayers", "DataLayers\DataLayers.csproj", "{F7946484-924F-4178-9305-536291593BA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

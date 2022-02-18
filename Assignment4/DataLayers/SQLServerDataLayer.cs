@@ -2,7 +2,7 @@
 
 namespace DataLayers
 {
-    public class Class1
+    public class SQLServerDataLayer
     {
     }
 }
