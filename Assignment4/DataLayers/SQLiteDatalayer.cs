@@ -24,46 +24,78 @@ namespace DataLayers
             {
                 using (SQLiteConnection conn = new SQLiteConnection(connectionString))
                 {
+                    conn.Open();
                     SQLiteCommand cmd = new SQLiteCommand(query, conn);
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                     adapter.Fill(ret);
+                    conn.Close();
                 }
             }
             catch (Exception ex)
             {
                 ret = null;
             }
+            finally
+            {
+                
+            }
 
             return ret;
         }
 
-        public void WriteDataFromFile(string fileName)
+        public void ClearTableData(string tableName)
+        {
+            string query = $"DELETE * FROM {tableName}";
+
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void WriteLine(string id, string type, DateTime tStamp, decimal uom1, decimal uom2)
         {
             string query = "";
-            string[] fileLines = File.ReadAllLines(fileName);
-            foreach (string line in fileLines)
-            {
-                string id = line.Split(',')[0];
-                string type = line.Split(',')[1];
-                DateTime tStamp = Convert.ToDateTime(line.Split(',')[2]);
-                decimal uom1 = Convert.ToDecimal(line.Split(',')[4]);
-                decimal uom2 = Convert.ToDecimal(line.Split(',')[6]);
 
-                switch (type)
+            switch (type)
+            {
+                case "ELECTRIC":
+                    query = $"INSERT INTO Electric VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
+                    break;
+                case "GPS":
+                    query = $"INSERT INTO GPS VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
+                    break;
+                case "GAS":
+                    query = $"INSERT INTO Gas VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
+                    break;
+                case "H2O":
+                    query = $"INSERT INTO Water VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
+                    break;
+            }
+
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
                 {
-                    case "ELECTRIC":
-                        query = $"INSERT INTO Electric VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
-                        break;
-                    case "GPS":
-                        query = $"INSERT INTO GPS VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
-                        break;
-                    case "GAS":
-                        query = $"INSERT INTO Gas VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
-                        break;
-                    case "H20":
-                        query = $"INSERT INTO Water VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
-                        break;
+                    conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
+            }
+            catch
+            {
+
             }
         }
     }
