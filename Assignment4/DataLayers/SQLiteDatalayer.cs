@@ -33,7 +33,7 @@ namespace DataLayers
             }
             catch (Exception ex)
             {
-                ret = null;
+                
             }
             finally
             {
