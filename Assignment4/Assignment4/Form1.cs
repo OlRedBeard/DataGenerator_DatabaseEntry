@@ -64,7 +64,8 @@ namespace Assignment4
                 foreach (DataRow rows in dt.Rows)
                 {
                     string id = rows[0].ToString();
-                    DateTime tStamp = Convert.ToDateTime(rows[1].ToString());
+                    string tmpDate = rows[1].ToString();
+                    DateTime tStamp = DateTime.Parse(tmpDate);
                     decimal uom1 = Convert.ToDecimal(rows[2]);
                     decimal uom2 = Convert.ToDecimal(rows[3]);
                     dl.WriteLine(id, type, tStamp, uom1, uom2);
@@ -108,7 +109,7 @@ namespace Assignment4
 
             dt = null;
             dt = dl2.GetTableData("Water");
-            type = "H20";
+            type = "H2O";
 
             if (dt.Rows.Count > 0)
             {

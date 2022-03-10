@@ -46,7 +46,7 @@ namespace DataGenerator
 
         private void Bgw2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("File Was Written");
+            
         }
 
         private void Bgw2_DoWork(object sender, DoWorkEventArgs e)

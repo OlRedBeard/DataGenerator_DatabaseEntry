@@ -45,7 +45,7 @@ namespace DataLayers
 
         public void ClearTableData(string tableName)
         {
-            string query = $"DELETE * FROM {tableName}";
+            string query = $"DELETE FROM {tableName}";
 
             try
             {

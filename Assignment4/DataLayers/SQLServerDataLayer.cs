@@ -52,7 +52,7 @@ namespace DataLayers
                     query = $"INSERT INTO Gas VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
                     break;
                 case "H2O":
-                    query = $"INSERT INTO Water VALUES ('{id}', '{tStamp}', {uom1}, {uom2})";
+                    query = $"INSERT INTO Water VALUES ('{id}', {tStamp}, {uom1}, {uom2})";
                     break;
             }
 
